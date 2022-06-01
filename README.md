@@ -1,2 +1,2 @@
 # JsAppventurez
-This contains all javascript content.
+This repository contains all backend training training content of javascript
