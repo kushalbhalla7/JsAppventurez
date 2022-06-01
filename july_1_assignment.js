@@ -61,9 +61,9 @@ let score2 = 0;
 let index = 0;
 
 do{
-    score2 = (array1[index] === 5) ? score2 + 5 :
-        (array1[index] % 2 === 0) ? score2 + 1 :
-        score2 + 3;
+    score2 = (array1[index] === 5) ? score2 + 5 : //checks for value is quals to 5
+        (array1[index] % 2 === 0) ? score2 + 1 : //checks for value is even 
+        score2 + 3; //now value will be a odd only
     index++;
 } while (index < array2.length);
 alert(score2); //19
