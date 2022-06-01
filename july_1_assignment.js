@@ -18,7 +18,7 @@ let score = 0;
 //looping through all array element
 for (let el = 0; array.length > el; el++) {
 
-    if(array[el] % 2 === 0) {  //either value is 0 or even score will be increased by one
+    if(array[el] === 0 || array[el] % 2 === 0) {  //either value is 0(which is even too) or even score will be increased by one
         score += 1;
     } else { // 
         if(array[el] === 5) {
@@ -42,12 +42,10 @@ while(array1.length > el) {
 
     if(array1[el] === 5) {  //checks for number is 5
         score1 += 5;
-    } else if(array1[el] % 2 === 0) { //checks for number is even
+    } else if(array1[el] % 2 === 0) { //checks for number is even (note 0 is alos a even number)
         score1 += 1;
-    } else if(array1[el] % 2 !== 0) { //checks for number is odd
+    } else { //checks for number is odd
         score1 += 3;
-    } else { //number will be 0
-        score1 += 1;
     }
     el++;
 }
@@ -65,8 +63,7 @@ let index = 0;
 do{
     score2 = (array1[index] === 5) ? score2 + 5 :
         (array1[index] % 2 === 0) ? score2 + 1 :
-        (array1[index] % 2 !== 0) ? score2 + 3 :
-        score2 + 1;
+        score2 + 3;
     index++;
 } while (index < array2.length);
 alert(score2); //19
