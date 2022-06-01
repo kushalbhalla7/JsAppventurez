@@ -28,4 +28,24 @@
 // alert( true == 1); //true
 // alert( false == 0); //true
 
-// alert( 0 == false ); //
+// let a = 0;
+// alert(Boolean(a)); // false
+
+// let b = "0";
+// alert(Boolean(b)); // true
+
+// alert(a==b); //true
+
+// alert( null === undefined ); //false
+
+// alert( null === undefined ); //true
+
+
+// alert( null > 0 ); //false
+// alert( null == 0 ); //false
+// alert( null >= 0 );  //true : > <  >= =< converts null into a number
+
+alert( undefined > 0 ); // false 
+alert( undefined < 0 ); // false 
+alert( undefined >= 0 ); // false 
+
