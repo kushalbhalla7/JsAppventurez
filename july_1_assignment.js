@@ -18,7 +18,7 @@ let score = 0;
 //looping through all array element
 for (let el = 0; array.length > el; el++) {
     
-    if(array[el] === 0 || array[el] % 2 === 0) {  //either value is 0(which is even too) or even, score will be increased by one
+    if(array[el] % 2 === 0) {  //either value is 0(which is even too) or even, score will be increased by one
         score += 1;
     } else { // 
         if(array[el] === 5) {
