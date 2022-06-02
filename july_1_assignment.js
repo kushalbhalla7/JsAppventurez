@@ -17,7 +17,7 @@ let score = 0;
 
 //looping through all array element
 for (let el = 0; array.length > el; el++) {
-
+    
     if(array[el] === 0 || array[el] % 2 === 0) {  //either value is 0(which is even too) or even, score will be increased by one
         score += 1;
     } else { // 
@@ -35,11 +35,10 @@ alert(score); //19
 
 let array1 = [1, 2, 4, 9, 5, 5, 0];
 let score1 = 0;
+let el = 0; //looping through all array element
 
-//looping through all array element
-let el = 0;
 while(array1.length > el) {
-
+    
     if(array1[el] === 5) {  //checks for number is 5
         score1 += 5;
     } else if(array1[el] % 2 === 0) { //checks for number is even (note 0 is alos a even number)
@@ -52,12 +51,10 @@ while(array1.length > el) {
 alert(score1); //19
 
 
-
 //Solution 3 : Ternary operator
 
 let array2 = [1, 2, 4, 9, 5, 5, 0];
 let score2 = 0;
-
 let index = 0;
 
 do{
