@@ -12,7 +12,7 @@
 
 
 // Solution 1 : For loop
-let array = [1, 2, 4, 9, 5, 5, 0];
+let array = [1, 2, 4, 9, 5, 5, 0, "kushal"];
 let score = 0;
 
 //looping through all array element
