@@ -1,1 +1,2 @@
-Updating some changes with Automation testing with mocha section.
+Completed today's training plan
+which contained from 4.1 unit to 5.4 (Arrays).
