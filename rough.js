@@ -86,21 +86,112 @@
 // alert(nothing());
 
 
-function showPrimes(n) {
+// function showPrimes(n) {
 
-  for (let i = 2; i < n; i++) {
-    if (!isPrime(i)) continue;
+//   for (let i = 2; i < n; i++) {
+//     if (!isPrime(i)) continue;
 
-    alert(i);  // a prime
+//     alert(i);  // a prime
+//   }
+// }
+
+// function isPrime(n) {
+//   for (let i = 2; i < n; i++) {
+//     if ( n % i == 0) return false;
+//   }
+//   return true;
+// }
+
+
+// alert(showPrimes(9));
+
+// function ask(qus, no) {
+//   if(qus) yes();
+//   else no();
+// }
+
+// let yes = function() {
+//   alert("yes");
+// }
+
+// function no() {
+//   alert("no");
+// }
+
+// alert(ask("This is a question"), function() {
+//   alert("yes");
+// }, no);
+
+// function myDisplayer(some) {
+//   console.log(some);
+// }
+
+// function myCalculator(num1, num2, mine) {
+//   let sum = num1 + num2;
+//   mine(sum);
+// }
+
+// myCalculator(4, 5, myDisplayer);
+
+
+
+//   Objects copies
+
+
+// let user = {
+//   "name": "something"
+// }
+// let admin = user;
+
+// admin.name = "defined";
+// console.log(admin, user);
+
+// let user = {
+//   "name": "john",
+//   "age": 19
+// }
+
+// let admin = {};
+// for (let key in user) {
+//   admin[key] = user[key];
+// } //totally seperate object
+
+// admin.name = "Michal"
+// console.log(admin, user);
+
+// let user = {
+//   "name": "kush",
+//   "age": 20
+// };
+
+// let id = {
+//   "code": 2342,
+//   "role": "admin"
+// }
+
+// let mix = {}
+// Object.assign(mix, user, id);
+// console.log(mix);
+
+
+function marry(man, woman) {
+  woman.husband = man;
+  man.wife = woman;
+
+  return {
+    father: man,
+    mother: woman
   }
 }
 
-function isPrime(n) {
-  for (let i = 2; i < n; i++) {
-    if ( n % i == 0) return false;
-  }
-  return true;
-}
+let family = marry({
+  "name": "John"
+}, {
+  "name": "Ann"
+});
 
+delete family.father;
+delete family.mother.husband;
+console.log(family);
 
-alert(showPrimes(9));
+family = null;
