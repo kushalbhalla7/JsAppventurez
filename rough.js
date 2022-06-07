@@ -387,3 +387,142 @@
 
 // let date = new Date(date1);
 // console.log(date);
+
+
+//  JSON  
+
+// let strudent = {
+//     name: 'John',
+//     age: 30,
+//     isAdmin: false,
+//     courses: ['html', 'css', 'js'],
+//     wife: null
+// }
+
+// let json = JSON.stringify(strudent);
+// console.log(json);
+
+
+// console.log(JSON.stringify(1));
+// console.log(JSON.stringify('test'));
+// console.log(JSON.stringify(true));
+// console.log(JSON.stringify([1, 2, 3]));
+
+// let user = {
+//     say() {
+//         console.log("Somethings");
+//     },
+//     [Symbol("id")] : 123,
+//     something: undefined
+// };
+// console.log(user);
+// console.log(JSON.stringify(user));
+
+// let meetup = {
+//     title: "Conference",
+//     room : {
+//         number: 23,
+//         participants: ["john", "ann"]
+//     }
+// }
+
+// console.log(JSON.stringify(meetup));
+
+// Riddle 
+// let meetup = {
+//     title: "Conference",
+//     room : {
+//         number: 23,
+//         participants: ["john", "ann"],
+//     }
+// }
+
+// meetup.place = meetup.room;
+// meetup.room.occupiedBy = meetup;
+// console.log(meetup);
+// console.log(JSON.stringify(meetup));
+
+
+// let room = {
+//     number: 23
+// };
+
+// let meetup = {
+//     title: "Conference",
+//     participants: [{name: "John"}, {name: "Alice"}],
+//     place: room
+// };
+
+// room.occupiedBy = meetup;
+// console.log(JSON.stringify(meetup, ['title', 'participants', 'name', 'place', 'number']));
+
+
+// let room = {
+//     number: 34
+// };
+
+// let meetup = {
+//     title: "Conference",
+//     participants: [{name: "John"}, {name: "Alice"}],
+//     place: room
+// };
+
+// room.occupiedBy = meetup;
+
+// console.log( JSON.stringify(meetup, (key, value) => {
+//     console.log(`${key} ${value}`);
+//     return (key == 'occupiedBy') ? undefined : value;
+// }));
+
+// // third argument add spaces
+// let user = {
+//     name: "John",
+//     age: 23,
+//     roles: {
+//         isAdmin: false,
+//         isEditor: true
+//     }
+// };
+
+// console.log(JSON.stringify(user, null, 2));
+
+// let room = {
+//     number: 23,
+//     toJSON() {
+//         return this.number;
+//     }
+// }
+
+// console.log(room.toJSON());
+
+
+//// JSON.parse 
+// To decode a json string we need another method names JSON.parse
+
+// let numbers = "[0, 1, 2, 3]";
+
+// numbers = JSON.parse(numbers);
+// console.log(numbers);
+
+// let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
+
+// let user = JSON.parse(userData);
+
+// console.log(( user.friends[1] )); // 1
+
+// let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
+// let meetup = JSON.parse(str);
+
+// console.log(meetup.date);
+// console.log(new Date(meetup.date).getTime());
+
+let schedule = `{
+    "meetups": [
+      {"title":"Conference","date":"2017-11-30T12:00:00.000Z"},
+      {"title":"Birthday","date":"2017-04-18T12:00:00.000Z"}
+    ]
+}`;
+
+schedule = JSON.parse(schedule, function(key, value) {
+    console.log(key, value);
+})
