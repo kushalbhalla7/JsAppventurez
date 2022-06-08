@@ -1,2 +1,2 @@
 Completed today's training plan
-which contained from 5.4 unit to 5.10 (Data types).
+which contained from 6.2 unit to 6.11 (Advanced working with function).
