@@ -1266,20 +1266,253 @@
 
 // user.name = "";
 
-function User(name, birthday) {
-  this.name = name;
-  this.birthday = birthday;
+// function User(name, birthday) {
+//   this.name = name;
+//   this.birthday = birthday;
 
-  // age is calculated from the current date and birthday
-  Object.defineProperty(this, "age", {
-    get() {
-      let todayYear = new Date().getFullYear();
-      return todayYear - this.birthday.getFullYear();
-    }
-  });
-}
+//   // age is calculated from the current date and birthday
+//   Object.defineProperty(this, "age", {
+//     get() {
+//       let todayYear = new Date().getFullYear();
+//       return todayYear - this.birthday.getFullYear();
+//     }
+//   });
+// }
 
-let john = new User("John", new Date(1992, 6, 1));
+// let john = new User("John", new Date(1992, 6, 1));
 
-console.log(john.birthday ); // birthday is available
-console.log( john.age );      // ...as well as the age
+// console.log(john.birthday ); // birthday is available
+// console.log( john.age );      // ...as well as the age
+
+// let user = {
+
+//   get names() {
+//     return this.name;
+//   }
+// };
+
+
+// Object.defineProperties(user, {"name": {value: "John"}, "age": {value: 14}})
+
+
+
+// console.log(user)
+// console.log(user.name);
+
+
+// console.log(user.names);
+
+
+
+
+///  Prototypal inheritance  ///
+
+
+
+// let animal = {
+//   eats: true
+// };
+
+// let rabbit = {
+//   jumps: false
+// };
+
+// rabbit.__proto__ = animal;
+
+// console.log(rabbit.jumps);
+
+
+// let animal = {
+//   walks: () => {
+//     console.log("It walks");
+//   }
+// }
+
+// let rabbit = {
+//   walks: "Yes",
+
+//   get walks() {
+//     console.log("Yup it does");
+//   }
+// }
+
+// rabbit.__proto__ = animal;
+
+// rabbit.walks;
+// rabbit.walks()
+
+
+// let user = {
+//   name: "John",
+//   surname: "Smith",
+
+//   set fullName(value) {
+//     [this.name, this.surname] = value.split(" ");
+//   },
+
+//   get fullName() {
+//     return `${this.name} ${this.surname}`;
+//   }
+// };
+
+
+// let admin = {
+//   __proto__: user,
+//   isAdmin: true,
+
+//   get nameValue() {
+//     console.log(this.name);  // undefined
+//   }
+// };
+
+// console.log(admin.fullName);
+
+// admin.fullname = "Alice Cooper";
+
+// console.log(admin.fullName);
+// console.log(user.fullName);
+// console.log(admin.nameValue);
+
+
+// let animal = {
+//   walk() {
+//     if (!this.isSleeping) {
+//       console.log('I Walk');
+//     }
+//   },
+
+//   sleep() {
+//     this.isSleeping = true
+//   }
+// };
+
+// let rabbit = {
+//   name: "White Rabbit",
+//   __proto__: animal
+// }
+
+// rabbit.sleep();
+// animal.sleep();
+// console.log(rabbit.isSleeping);
+// console.log(animal.isSleeping);
+
+
+// let animal = {
+//   eats: true
+// };
+
+// let rabbit = {
+//   jumps: true,
+//   __proto__: animal
+// };
+
+// console.log(Object.keys(rabbit));
+
+// for (let prop in rabbit) {
+
+//   let isOwn = rabbit.hasOwnProperty(prop);
+
+//   if (isOwn) {
+//     console.log(`Our: ${prop}`);
+//   } else {
+//     console.log(`Inherited: ${prop}`);
+//   }
+//   console.log(prop);
+
+// }
+
+
+
+// function prototype
+
+
+// let animal = {
+//   eats: true
+// };
+
+// function Rabbit(name) {
+//   this.name = name;
+// }
+
+// Rabbit.prototype = animal;
+
+// let rabbit = new Rabbit("White Rabbit"); 
+// let rabbit1 = new rabbit.constructor("Black rabbit");
+
+// console.log( rabbit.eats );
+// console.log( rabbit1.name );
+
+
+// function Rabbit() {}
+
+// Rabbit.prototype = {
+//   jumps: true
+// };
+
+// let rabbit = new Rabbit();
+// console.log(rabbit.contructor 
+
+// function Person(first, last, age, eyecolor) {
+//   this.firstName = first;
+//   this.lastName = last;
+//   this.age = age;
+//   this.eyeColor = eyecolor;
+// }
+
+// Person.prototype.nationality = "English";
+
+// function Rabbit() {}
+
+// Rabbit.prototype = {
+//   jumps: true
+// };
+
+// let rabbit = new Rabbit();
+// console.log(rabbit.constructor === Rabbit);
+
+// let obj = {};
+
+// console.log(obj.__proto__ === Object.prototype);
+
+// console.log(obj.toString === obj.__proto__.toString); 
+// console.log(obj.toString === Object.prototype.toString);
+
+
+// let arr = [1, 3, 5];
+
+// console.log(arr.__proto__ === Array.prototype);
+// console.log(arr.__proto__.__proto__ === Object.prototype);
+
+// function Rabbit() {}
+// Rabbit.prototype = {
+//   jumps: true,
+//   constructor: Rabbit
+// }
+// // Rabbit.prototype = { constructor: Rabbit }
+
+// let rabbit = new Rabbit();
+
+// console.log(rabbit.constructor === Rabbit);
+
+
+// let animal = {
+//   eats: true
+// };
+
+// let rabbit = Object.create(animal);
+
+// console.log(rabbit.eats);
+
+// console.log(Object.getPrototypeOf(rabbit) ===  animal);
+
+// Object.setPrototypeOf(rabbit, {});
+
+// console.log(Object.getPrototypeOf(rabbit) ===  animal);
+
+
+let obj = {};
+
+let key = prompt("What's the key?", "__proto__");
+obj[key] = "some value";
+
+console.log(obj[key]);
