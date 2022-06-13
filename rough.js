@@ -62,7 +62,7 @@
 
 //function
 
-// let username = "kushal";
+// let username = "mani";
 
 // function message() {
 //   let username = "manish";
@@ -516,13 +516,1003 @@
 // console.log(meetup.date);
 // console.log(new Date(meetup.date).getTime());
 
-let schedule = `{
-    "meetups": [
-      {"title":"Conference","date":"2017-11-30T12:00:00.000Z"},
-      {"title":"Birthday","date":"2017-04-18T12:00:00.000Z"}
-    ]
-}`;
+// let schedule = `{
+//     "meetups": [
+//       {"title":"Conference","date":"2017-11-30T12:00:00.000Z"},
+//       {"title":"Birthday","date":"2017-04-18T12:00:00.000Z"}
+//     ]
+// }`;
 
-schedule = JSON.parse(schedule, function(key, value) {
-    console.log(key, value);
-})
+// schedule = JSON.parse(schedule, function(key, value) {
+//     console.log(key, value);
+// })
+
+
+// rest parameters and spread 
+
+
+// const sumAll = (...args) => {
+//     let sum = 0;
+
+//     for (let arg of args) sum += arg;
+
+//     return sum;
+// }
+
+// console.log(sumAll(2,4,5,6,7));
+
+
+// function showName() {
+//     console.log(arguments.length);
+//     console.log(arguments[0]);
+//     console.log(arguments[1]);
+// }
+
+// const showName = () => {
+//     console.log(arguments.length);
+//     console.log(arguments[0]);
+//     console.log(arguments[1]);
+// }
+
+// showName("Julius", "Cassy");
+
+// console.log(Math.max(1,2,4,5,6)); //6
+// console.log(Math.max([1,2,4,5,6])); //NaN
+// console.log(Math.max(...[1,2,4,5,6])); // 6
+
+// console.log(Math.max(...[23, 34, 32], ...[90, 45, 23])); // 90
+// console.log(Math.min(...[23, 34, 32], ...[90, 45, 23]));
+// console.log(Math.max(..."9028340")); //9
+
+// let arr = [1, 2, 3];
+
+// let arrCopy = [...arr];
+// let arrCopy1 = arr;
+// console.log( arrCopy == arr);
+// console.log(arrCopy1 == arr);
+
+
+// Variable scope closure
+
+// for (let i of [1, 2, 4]) {
+//     console.log(i);
+// }
+
+// console.log(i);
+
+// const check = () => {
+//     let name = "John"
+
+//     const print = () => {
+//         // let name = "asd";
+//         return name;
+//     }
+
+//     return print();
+// }
+
+// console.log(check());
+
+
+// const makeCounter = () => {
+//     let count = 0;
+
+//     return () => {
+//         return count++;
+//     };
+// }
+// let counter  = makeCounter();
+// console.log(counter());
+// console.log(counter());
+// console.log(counter());
+
+
+// const f = () => {
+//     let value = Math.random();
+
+//     return () => {
+//         console.log(value);
+//     }
+// }
+
+// let arr = [f(), f(), f()];
+// console.log(arr);
+
+
+// const f = () => {
+//     let value = Math.random();
+
+//     const g = () => {
+//         debugger;
+//     }
+
+//     return g;
+// }
+
+// let g = f();
+// g();
+
+
+// let value = 12;
+
+// const f = () => {
+//     let value = 23;
+
+//     const g = () => {
+//         debugger;
+//     }
+
+//     return g;
+// }
+
+// let g = f();
+// g();
+
+
+/// old var ///
+
+// if (true) {
+//     var name = "John";
+// }
+
+// console.log(name);
+
+// for (var i = 0; i < 10; i++) {
+//     console.log(i);
+// }
+
+// console.log(i);
+
+
+// var name = "John";
+
+// var name = "Kally";
+
+// console.log(name);
+
+
+// let sayHi = () => {
+//     phrase = "Hello";
+
+//     console.log(phrase);
+
+//     var phrase;
+// }
+
+// sayHi();
+
+
+// let sayHi = () => {
+//     phrase = "Hello";
+
+//     if (false) {
+//         var phrase;
+//     }
+
+//     console.log(phrase);
+// }
+
+// sayHi();
+
+// Ways to create IIFE
+
+// (() => {
+//     console.log("Somethings");
+// })();
+
+// (function() {
+//     console.log("Somethings");
+// }());
+
+// !function() {
+//     console.log("Somethings");
+// }();
+
+// + function() {
+//     console.log("Somethings");
+// }();
+
+
+
+/// Global object ///
+
+
+// window.console.log("somethings");
+// global.gVar = 5;
+// let = 
+
+// console.log(global.gVar);
+
+// let currentUser = {
+//     name: "John"
+// };
+
+// console.log(currentUser.name);
+// console.log(window.currentUser.name);
+
+
+// if (window.Promise) {
+//     console.log("Somethings");
+// }
+
+
+/////   FUnction object    ///////
+
+// const sayHi = () => {
+//     console.log("HI");
+// }
+
+// console.log(sayHi.name);
+// console.log(sayHi.length);
+// console.log(sayHi.call());
+// console.log(sayHi.arguments);
+
+
+// function ask(question, ...handlers) {
+//     let isYes = process.argv[2];
+  
+//     for(let handler of handlers) {
+//       if (handler.length == 0) {
+//         if (isYes) handler();
+//       } else {
+//         handler(isYes);
+//       }
+//     }
+  
+//   }
+  
+//   // for positive answer, both handlers are called
+//   // for negative answer, only the second one
+//   ask("Question?", () => console.log('You said yes'), result => console.log(result));
+
+
+// function syaHi() {
+//     console.log("Hi");
+
+//     syaHi.counter++;
+// }
+
+// syaHi.counter = 0;
+
+// syaHi();
+// syaHi();
+
+// console.log(`Called ${syaHi.counter} items`);
+
+// function makeCounter() {
+
+//     function counter() {
+//         return counter.count++;
+//     }
+
+//     counter.count = 0;
+
+//     return counter;
+// }
+
+// let counter = makeCounter();
+// counter.count = 10;
+// console.log(counter());
+// console.log(counter());
+
+// let sayHi = function func(who) {
+//     if (who) {
+//         console.log(`Hey ${who}`);
+//     } else {
+//         sayHi("Guest");
+//     }
+// };
+
+// console.log(sayHi());
+
+
+
+// let timeId = setTimeout(() => console.log('hey'), 1000);
+// clearTimeout(timeId)
+
+// let timerId = setTimeout(() => console.log("never happens"), 1000);
+// console.log(timerId); 
+
+// clearTimeout(timerId);
+// console.log(timerId); 
+
+
+//// SET INTERVAL ///
+
+// let timeId = setInterval(() => console.log('tick'), 1000);
+
+// setTimeout(() => clearInterval(timeId), 5000);
+
+
+// let timeId = setTimeout(function tick() {
+//     console.log('tick');
+//     timeId = setTimeout(tick, 2000);
+// }, 2000);
+
+
+// let start = Date.now();
+// let times = [];
+
+// setTimeout(function run() {
+//   times.push(Date.now() - start); 
+
+//   if (start + 100 < Date.now()) console.log(times); 
+//   else setTimeout(run); 
+// });
+
+
+//  Decorators and forwarding, call/appy
+
+
+// function slow(x) {
+
+//   console.log(`Called with ${x}`);
+//   return x;
+// }
+
+// function catchingDecorator(func) {
+//   let cache = new Map();
+
+//   return function(x) {
+//     if (cache.has(x)) {
+//       return cache.get(x);
+//     }
+
+//     let result = func(x);
+
+//     cache.set(x, result);
+//     return result;
+//   };
+// }
+
+// slow = catchingDecorator(slow);
+// console.log( slow(1) );
+// console.log( "Agian: " + slow(1));
+// console.log( slow(2) );
+
+
+/// decorator for objects
+
+// let worker = {
+//   someMethod() {
+//     return 1;
+//   },
+
+//   slow(x) {
+//     console.log("Called with " + x);
+//     return x * this.someMethod(); // (*)
+//   }
+// };
+
+// function catchingDecorator(func) {
+
+//   let cache = new Map();
+
+//   return function(num) {
+//     if (cache.has(num)) {
+//       return cache.get(num);
+//     }
+//     let result = func.call(this, num);
+
+//     cache.set(num, result);
+
+//     return result;
+//   }
+// }
+
+// worker.slow = catchingDecorator(worker.slow);
+
+// console.log(worker.slow(2));
+
+
+// let worker = {
+//   slow(min, max) {
+//     console.log(`Called with ${min} , ${max}`);
+//     return min + max;
+//   }
+// };
+
+// function catchingDecorator(func, hash) {
+
+//   let cache = new Map();
+
+//   return function() {
+//     let key = hash(arguments)
+//     if (cache.has(key)) {
+//       return cache.get(key);
+//     }
+
+//     let result = func.call(this, ...arguments);
+
+//     cache.set(key, result);
+//     return result;
+//   }
+// };
+
+// function hash(args) {
+//   return args[0] + ',' + args[1];
+// }
+
+// worker.slow = catchingDecorator(worker.slow, hash);
+
+// console.log(worker.slow(6, 7));
+
+
+
+
+// function sayHi() {
+//   console.log(this.name);
+// }
+
+// let user = { name: "John" };
+// let admin = { name: "Admin" };
+
+// sayHi.call( user );
+// sayHi.call( admin );
+
+
+
+//// Arrow functions //////
+
+// let group = {
+//   title: "Our Group",
+//   students: ['John', 'Pete', 'Alice'],
+
+//   showList() {
+//     this.students.forEach(
+//       student => console.log(this.title + ': ' + student)
+//     );
+//   }
+// };
+
+// group.showList();
+
+// function defer(f, ms) {
+//   return function() {
+//     setTimeout(() => f.apply(this, arguments), ms);
+//   };
+// }
+
+// function sayHi(who) {
+//   console.log('Hello, ' + who);
+// }
+
+// let sayHiDeferred = defer(sayHi, 2000);
+
+// sayHiDeferred('John');
+
+
+// function defer(f, ms) {
+//   return function(...args) {
+//     let ctx = this;
+//     setTimeout(function() {
+//       return f.apply(ctx, args);
+//     }, ms);
+//   };
+// }
+
+// function sayHi(who) {
+//   console.log('Hello, ' + who);
+// }
+
+// let sayHiDeferred = defer(sayHi, 2000);
+
+// sayHiDeferred('John');
+
+
+///////////   BIND    ////////
+
+// let user = {
+//   firstName: "John",
+//   sayHi() {
+//     console.log(`Hello, ${this.firstName}!`);
+//   }
+// };
+
+// // setTimeout(user.sayHi, 1000); // Hello, undefined!
+
+
+// setTimeout(() => user.sayHi(), 1000);
+
+
+// user = {
+//   sayHi() {console.log("Another user in setTimeout");}
+// }
+
+// let user = {
+//   firstName: "John"
+// };
+
+// function func() {
+//   console.log(this.firstName);
+// }
+
+// let funcUser = func.bind(user);
+
+// funcUser();
+
+// let user = {
+//   firstName: "John"
+// }
+
+// function func(phrase) {
+//   console.log(phrase + ' ' + this.firstName);
+// }
+
+// let funcUser = func.bind(user);
+
+// funcUser("hello");
+
+// let user = {
+//   firstName: "John",
+//   sayHi() {
+//     console.log(`Hello, ${this.firstName}!`);
+//   }
+// }
+
+// let sayHi = user.sayHi.bind(user);
+
+// sayHi();
+
+// setTimeout(sayHi, 1000);
+
+
+// user = {
+//   sayHi() {console.log("Another function");}
+// }
+
+// function mul(a, b) {
+//   return a * b;
+// }
+
+// let double = mul.bind(null, 2);
+
+// console.log( double(3) );
+// console.log( double(4) );
+// console.log( double(5) );
+
+// function partial(func, ...argsBound) {
+//   return function(...args) {
+//     return func.call(this, ...argsBound, ...args);
+//   }
+// }
+
+// let user = {
+//   firstName: 'John',
+//   say(time, phrase) {
+//     console.log(`[${time}] ${this.firstName}: ${phrase}!`);
+//   }
+// };
+
+// user.sayNow = partial(user.say, new Date().getHours() + ':' + new Date().getMinutes())
+
+// user.sayNow("hello");
+
+
+// let group = {
+//   title: "Our Group",
+//   students: ["John", "Pete", "Alice"],
+
+//   showList() {
+//     this.students.forEach(
+//       student => {
+//         console.log(this);
+//         console.log(this.title + ': ' + student)
+//       }
+//     );
+//   }
+// };
+
+// group.showList();
+
+
+
+
+
+/////  Property descriptor
+
+// let descriptor = Object.getOwnPropertyDescriptor({name: "john"}, "name");
+// descriptor.writable = false;
+
+// console.log(descriptor);
+
+
+// let user = {};
+
+// Object.defineProperty(user, "name", {
+//   value: "John", writable: false
+// });
+
+// let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+// console.log(descriptor);
+// console.log(user.values);
+// // Object.defineProperty(user, "name", {
+// //   value: "John", writable: true
+// // });
+// console.log(user.name);
+// user.name = "jksdf";
+
+// let user = {
+//   name: 'John',
+//   toString() {
+//     return this.name;
+//   }
+// };
+
+// Object.defineProperty(user, "name", {
+//   writable: true,
+//   enumerable: false
+// })
+// for (let key in user) console.log(user[key] = "fals");
+
+// console.log(user);
+
+
+// Math.PI = 3;
+
+
+// let user = {
+//   name: "John"
+// };
+
+// Object.defineProperty(user, "name", {
+//   writable: false,
+//   configurable: false
+// });
+
+// user.name = "Pete";
+// delete user.name;
+// Object.defineProperty(user, "name", { value: "Pete" });
+
+
+// const user = {}
+
+// Object.defineProperties(user, {
+//   name: { value: "John", writable: false },
+//   surname: { value: "Smith", writable: false },
+// });
+
+// user.name = "John";
+
+
+// let user = {}
+
+// let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(user));
+
+// for (let key in user) {
+//   clone[key] = user[key]
+// }
+
+// console.log(clone);
+
+// let user = {}
+
+// Object.preventExtensions(user); /// forbids the addition of new properties
+
+// Object.seal(user);  //  forbids adding and remove of properties
+
+// Object.freeze(user);
+
+// console.log(Object.isExtensible(user));
+
+// Object.defineProperty(user, "name", {
+//   value: "John",
+//   writable: true
+// })
+
+// console.log(user.name);
+
+
+// let user = {
+//   name: "John",
+//   surname: "Smith",
+
+//   get fullName() {
+//     return `${this.name} ${this.surname}`
+//   },
+
+//   set changeName(name) {
+//     this.name = name.split(' ')[0];
+//     this.surname = name.split(' ')[1];
+//   }
+// }
+
+
+// console.log(user.fullName);
+// console.log(user.changeName = "Kelly");
+// user.changeName = "keylly Jackson"
+// console.log(user.fullName);
+
+
+// let user = {
+//   name: "John",
+//   surname: "Smith"
+// };
+
+// Object.defineProperty(user, 'fullName', {
+//   get() {
+//     return `${this.name} ${this.surname}`;
+//   },
+
+//   set(value) {
+//     [this.name, this.surname] = value.split(" ");
+//   }
+// });
+
+// console.log(user.fullName);
+// user.fullName = "Kally Jackson";
+// console.log(user);
+
+// for (let key in user) console.log(key);
+
+
+// let user = {
+//   get name() {
+//     return this._name;
+//   },
+
+//   set name(value) {
+//     if (value.length < 4) {
+//       console.log("Name is too short, need at least 4 characters");
+//       return;
+//     }
+//     this._name = value;
+//   }
+// };
+
+// user.name = "Pete";
+// console.log(user.name);
+
+// user.name = "";
+
+// function User(name, birthday) {
+//   this.name = name;
+//   this.birthday = birthday;
+
+//   // age is calculated from the current date and birthday
+//   Object.defineProperty(this, "age", {
+//     get() {
+//       let todayYear = new Date().getFullYear();
+//       return todayYear - this.birthday.getFullYear();
+//     }
+//   });
+// }
+
+// let john = new User("John", new Date(1992, 6, 1));
+
+// console.log(john.birthday ); // birthday is available
+// console.log( john.age );      // ...as well as the age
+
+// let user = {
+
+//   get names() {
+//     return this.name;
+//   }
+// };
+
+
+// Object.defineProperties(user, {"name": {value: "John"}, "age": {value: 14}})
+
+
+
+// console.log(user)
+// console.log(user.name);
+
+
+// console.log(user.names);
+
+
+
+
+///  Prototypal inheritance  ///
+
+
+
+// let animal = {
+//   eats: true
+// };
+
+// let rabbit = {
+//   jumps: false
+// };
+
+// rabbit.__proto__ = animal;
+
+// console.log(rabbit.jumps);
+
+
+// let animal = {
+//   walks: () => {
+//     console.log("It walks");
+//   }
+// }
+
+// let rabbit = {
+//   walks: "Yes",
+
+//   get walks() {
+//     console.log("Yup it does");
+//   }
+// }
+
+// rabbit.__proto__ = animal;
+
+// rabbit.walks;
+// rabbit.walks()
+
+
+// let user = {
+//   name: "John",
+//   surname: "Smith",
+
+//   set fullName(value) {
+//     [this.name, this.surname] = value.split(" ");
+//   },
+
+//   get fullName() {
+//     return `${this.name} ${this.surname}`;
+//   }
+// };
+
+
+// let admin = {
+//   __proto__: user,
+//   isAdmin: true,
+
+//   get nameValue() {
+//     console.log(this.name);  // undefined
+//   }
+// };
+
+// console.log(admin.fullName);
+
+// admin.fullname = "Alice Cooper";
+
+// console.log(admin.fullName);
+// console.log(user.fullName);
+// console.log(admin.nameValue);
+
+
+// let animal = {
+//   walk() {
+//     if (!this.isSleeping) {
+//       console.log('I Walk');
+//     }
+//   },
+
+//   sleep() {
+//     this.isSleeping = true
+//   }
+// };
+
+// let rabbit = {
+//   name: "White Rabbit",
+//   __proto__: animal
+// }
+
+// rabbit.sleep();
+// animal.sleep();
+// console.log(rabbit.isSleeping);
+// console.log(animal.isSleeping);
+
+
+// let animal = {
+//   eats: true
+// };
+
+// let rabbit = {
+//   jumps: true,
+//   __proto__: animal
+// };
+
+// console.log(Object.keys(rabbit));
+
+// for (let prop in rabbit) {
+
+//   let isOwn = rabbit.hasOwnProperty(prop);
+
+//   if (isOwn) {
+//     console.log(`Our: ${prop}`);
+//   } else {
+//     console.log(`Inherited: ${prop}`);
+//   }
+//   console.log(prop);
+
+// }
+
+
+
+// function prototype
+
+
+// let animal = {
+//   eats: true
+// };
+
+// function Rabbit(name) {
+//   this.name = name;
+// }
+
+// Rabbit.prototype = animal;
+
+// let rabbit = new Rabbit("White Rabbit"); 
+// let rabbit1 = new rabbit.constructor("Black rabbit");
+
+// console.log( rabbit.eats );
+// console.log( rabbit1.name );
+
+
+// function Rabbit() {}
+
+// Rabbit.prototype = {
+//   jumps: true
+// };
+
+// let rabbit = new Rabbit();
+// console.log(rabbit.contructor 
+
+// function Person(first, last, age, eyecolor) {
+//   this.firstName = first;
+//   this.lastName = last;
+//   this.age = age;
+//   this.eyeColor = eyecolor;
+// }
+
+// Person.prototype.nationality = "English";
+
+// function Rabbit() {}
+
+// Rabbit.prototype = {
+//   jumps: true
+// };
+
+// let rabbit = new Rabbit();
+// console.log(rabbit.constructor === Rabbit);
+
+// let obj = {};
+
+// console.log(obj.__proto__ === Object.prototype);
+
+// console.log(obj.toString === obj.__proto__.toString); 
+// console.log(obj.toString === Object.prototype.toString);
+
+
+// let arr = [1, 3, 5];
+
+// console.log(arr.__proto__ === Array.prototype);
+// console.log(arr.__proto__.__proto__ === Object.prototype);
+
+// function Rabbit() {}
+// Rabbit.prototype = {
+//   jumps: true,
+//   constructor: Rabbit
+// }
+// // Rabbit.prototype = { constructor: Rabbit }
+
+// let rabbit = new Rabbit();
+
+// console.log(rabbit.constructor === Rabbit);
+
+
+// let animal = {
+//   eats: true
+// };
+
+// let rabbit = Object.create(animal);
+
+// console.log(rabbit.eats);
+
+// console.log(Object.getPrototypeOf(rabbit) ===  animal);
+
+// Object.setPrototypeOf(rabbit, {});
+
+// console.log(Object.getPrototypeOf(rabbit) ===  animal);
+
+
+let obj = {};
+
+let key = prompt("What's the key?", "__proto__");
+obj[key] = "some value";
+
+console.log(obj[key]);
