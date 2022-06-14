@@ -1564,15 +1564,105 @@
 
 ///   Extending build in classes
 
-class PowerArray extends Array {
-    isEmpty() {
-        return this.length === 0 ? 0 : this.length;
-    }
-}
+// class PowerArray extends Array {
+//     isEmpty() {
+//         return this.length === 0 ? 0 : this.length;
+//     }
+// }
 
-let arr = new PowerArray(1,2,3,4,5,6,7);
-console.log(arr.isEmpty());
+// let arr = new PowerArray(1,2,3,4,5,6,7);
+// console.log(arr.isEmpty());
 
-let filteredArr = arr.filter(item => item >= 10);
-console.log(filteredArr);
-console.log(filteredArr.isEmpty());
+// let filteredArr = arr.filter(item => item >= 10);
+// console.log(filteredArr);
+// console.log(filteredArr.isEmpty());
+
+
+//// MIXIN ////
+
+// let sayHiMixin = {
+//     syaHi() {
+//         console.log(`Hello ${this.name}`);
+//     },
+//     sayBye() {
+//         console.log(`Bye ${this.name}`);
+//     }
+// };
+
+// class User {
+
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// Object.assign(User.prototype, sayHiMixin);
+
+// new User("Dobby").syaHi();
+
+
+
+// // inheriting mixins from extended class
+
+// let sayHiMixin = {
+//     syaHi() {
+//         console.log(`Hello ${this.name}`);
+//     },
+//     sayBye() {
+//         console.log(`Bye ${this.name}`);
+//     }
+// };
+
+// class Person {
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// Object.assign(Person.prototype, sayHiMixin);
+
+// class User extends Person {
+
+//     constructor(name) {
+//         super();
+//         this.name = name;
+//     }
+// }
+
+
+// new Person("Dobby").syaHi();
+// new User("Waldamort").syaHi();
+
+
+// extending mixin linked class to another class
+
+// let sayHiMixin = {
+//     syaHi() {
+//         console.log(`Hello ${this.name}`);
+//     },
+//     sayBye() {
+//         console.log(`Bye ${this.name}`);
+//     }
+// };
+
+// class User {
+
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// class Person extends User {
+//     constructor(name) {
+//         super();
+//         this.name = name;
+//     }
+// }
+
+// Object.assign(User.prototype, sayHiMixin);
+
+// new User("Dobby").syaHi();
+
+// new Person("some").syaHi();
+
+
