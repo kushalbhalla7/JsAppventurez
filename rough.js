@@ -1510,9 +1510,69 @@
 // console.log(Object.getPrototypeOf(rabbit) ===  animal);
 
 
-let obj = {};
+// let obj = {};
 
-let key = prompt("What's the key?", "__proto__");
-obj[key] = "some value";
+// let key = prompt("What's the key?", "__proto__");
+// obj[key] = "some value";
 
-console.log(obj[key]);
+// console.log(obj[key]);
+
+
+
+
+//// private protected properties methods
+
+// class CoffeeMachine {
+    
+//     constructor(power) {
+//         this._power = power;
+//     }
+
+//     get power() {
+//         return this._power;
+//     }
+// }
+
+// let coffeeMachine = new CoffeeMachine(122);
+
+// console.log(coffeeMachine._power);
+// coffeeMachine._power = 500
+// console.log(coffeeMachine.power);
+
+// class CoffeMachine {
+//     _waterLimit = 100;
+//     waterLimit = 100;
+//     #waterLimit = 200;
+
+//     #fixWaterAmount(value) {
+//         if (value < 0) return 0;
+//         if (value > this.#waterLimit) return this.#waterLimit;
+//     }
+
+//     setWaterAmount(value) {
+//         this.#waterLimit = this.#fixWaterAmount(value);
+//     }
+// }
+
+// let coffeeMachine = new COffeeMachine();
+
+// // coffeeMachine.#fixWaterAmount(123);  // ERROR
+// // coffeeMachine.#waterLimit = 100; // ERROR
+
+
+
+
+///   Extending build in classes
+
+class PowerArray extends Array {
+    isEmpty() {
+        return this.length === 0 ? 0 : this.length;
+    }
+}
+
+let arr = new PowerArray(1,2,3,4,5,6,7);
+console.log(arr.isEmpty());
+
+let filteredArr = arr.filter(item => item >= 10);
+console.log(filteredArr);
+console.log(filteredArr.isEmpty());
