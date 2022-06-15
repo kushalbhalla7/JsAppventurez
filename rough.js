@@ -1666,3 +1666,66 @@
 // new Person("some").syaHi();
 
 
+// function loadScript(src, callback) {
+//     let script = document.createElement('script');
+//     script.src = src;
+
+//     script.onload = () => callback(null, script);
+//     script.onerror = () => callback(new Error(`Script load error for #{src}`));
+
+//     document.head.append(script);
+// }
+
+// loadScript('./rough.js', function(error, script) {
+//     if (error) {
+
+//     } else {
+
+//     }
+// })
+
+
+
+// failed example in callback
+
+// function intro() {
+
+//     console.log("Hey good to start now \n wait to 20 seconds");
+
+//     setTimeout(() => {
+//         console.log("Waiting is over now");
+//     }, 20000);
+// }
+
+// intro();
+// console.log("Its finishd now");
+
+
+// // successful callback handling
+
+// function intro(callback) {
+
+//     console.log("Hey good to start now \nwait to 5 seconds");
+
+//     setTimeout(() => {
+//         console.log("Waiting is over now");
+//         callback();
+//     }, 5000);
+// }
+
+// intro(() => {
+//     console.log("Its finished now");
+// });
+
+
+// function loadScript(src, callback) {
+//     let script = document.createElement('script');
+//     script.src = src;
+//     script.onload = () => callback(script);
+//     document.head.append(script);
+// }
+
+// loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+//     console.log(`Cool, the script ${script.src} is loaded`);
+//     console.log( _ ); // function declared in the loaded script
+// });

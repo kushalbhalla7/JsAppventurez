@@ -1,0 +1,78 @@
+
+<!-- 
+    Task 3: Animated circle with promise
+
+    Rewrite the showCircle function in the solution of the task 
+    Animated circle with callback so that it returns a promise instead of accepting a callback.
+-->
+
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      /* css style for circle class*/
+      .circle {
+        transition-property: width, height;
+        transition-duration: 2s;
+        position: fixed;
+        transform: translateX(-50%) translateY(-50%);
+        background-color: red;
+        border-radius: 50%;
+          
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+        width: 200px;
+        height: 200px;
+        top: 150px;
+        left: 150px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <button id="startBtn" onclick="start()">Click me</button>
+
+    <script>
+
+        // start function to start functionality
+        let start = () => {
+            console.log("called");
+            showCircle(150, 150, 100).then(div => { // calling showCircle function
+                console.log(div);
+                div.classList.add('message-ball');
+                div.append("Hello, world!")
+            });
+        }
+
+        // showCircle function which does create DOM element 
+        let showCircle = (left, top, radius) => {
+            let div = document.createElement('div');
+            div.style.width = 0;
+            div.style.height = 0;
+            div.style.left = left + 'px';
+            div.style.top = top + 'px';
+            div.className = 'circle';
+            document.body.append(div);
+
+            document.getElementById('startBtn').style.display = "none";
+
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    div.style.width = radius * 2 + 'px';
+                    div.style.height = radius * 2 + 'px';
+
+                    div.addEventListener('transitionend', function handler() {
+                        div.removeEventListener('transitionend', handler);
+                        resolve(div);
+                    });
+                }, 0);
+            })
+        }
+    </script>
+
+  </body>
+</html>
