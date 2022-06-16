@@ -1729,3 +1729,119 @@
 //     console.log(`Cool, the script ${script.src} is loaded`);
 //     console.log( _ ); // function declared in the loaded script
 // });
+
+
+
+
+
+//////  promise chaining  /////////
+
+// new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(1), 3000);
+// })
+// .then((result) => {
+//     console.log(result);
+//     return new Promise((resolve, reject) => { // (*)
+//         setTimeout(() => resolve(result * 2), 1000);
+//     });
+// })
+// .then((result) => {
+//     console.log(result);
+//     return new Promise((resolve, reject) => { // (*)
+//         setTimeout(() => reject(new Error("somethings")), 1000);
+//     });
+// })
+// .then((result) => {
+//     console.log(result);
+//     return new Promise((resolve, reject) => { // (*)
+//         setTimeout(() => resolve(result * 2), 1000);
+//     });
+// })
+
+
+// new Promise((resolve, reject) => {
+//     resolve("ok");
+// }).then(result => {
+//     nothing();
+// }).catch(err => console.log(err.message))
+// .then(err => console.log("sdf"))
+
+
+
+
+// new Promise((resolve, reject) => {
+//     throw new Error('WHoops');
+// }).catch((err) => {
+//     console.log(err.message);
+//     if (err instanceof URIError) {
+//         console.log('handled');
+//     } else {
+//         console.log('Cant handle it');
+//     }
+// }).then(() => {
+//     console.log("nothing to run");
+//     zdfsd
+// })
+// .catch(error => {
+//     console.log(error);
+//     console.log("Unknown error");
+// })
+
+
+///// Promise methods  //////
+
+
+// Promise.all([
+//     new Promise((resolve, reject) => setTimeout(() => resolve(3), 3000)),
+//     new Promise((resolve, reject) => setTimeout(() => resolve(2), 2000)),
+//     new Promise((resolve, reject) => setTimeout(() => resolve(1), 1000)),
+// ]).then(() => console.log("End of the script"));
+
+
+// Promise.all([
+//     new Promise((resolve, reject) => setTimeout(() => {
+//         resolve(3);
+//     }, 3000)),
+//     new Promise((resolve, reject) => setTimeout(() => {
+//         reject(new Error("Error in 2"));
+//     }, 2000)),
+//     new Promise((resolve, reject) => setTimeout(() => {
+//         reject(new Error("Error in 1"))
+//     }, 1000)),
+// ])
+// .then(value => console.log(`returned value ${value}`))
+// .catch((err) => {
+//     console.log("caugth error");
+//     console.log(err);
+// })
+
+
+
+// Promise.race([
+//     new Promise((resolve, reject) => setTimeout(() => resolve(1), 10000)),
+//     new Promise((resolve, reject) => setTimeout(() => reject(new Error("Whoops!")), 2000)),
+//     new Promise((resolve, reject) => setTimeout(() => resolve(3), 3000))
+//   ]).then(value => console.log(value)); // 1
+
+
+
+Promise.any([
+    new Promise((resolve, reject) => setTimeout(() => resolve("Whoops!"), 2000)),
+    new Promise((resolve, reject) => setTimeout(() => resolve(1), 1000)),
+    new Promise((resolve, reject) => setTimeout(() => reject(new Error("soemthigns")), 3000))
+  ]).then(value => console.log(value)); // 1
+
+
+
+// Promise.any([
+//     new Promise((resolve, reject) => setTimeout(() => reject(new Error("Ouch!")), 1000)),
+//     new Promise((resolve, reject) => setTimeout(() => reject(new Error("Error!")), 2000))
+//   ]).catch(error => {
+//     console.log(error.constructor.name); // AggregateError
+//     console.log(error.errors[0]); // Error: Ouch!
+//     console.log(error.errors[1]); // Error: Error!
+//   });
+
+
+
+
