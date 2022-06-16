@@ -1510,9 +1510,222 @@
 // console.log(Object.getPrototypeOf(rabbit) ===  animal);
 
 
-let obj = {};
+// let obj = {};
 
-let key = prompt("What's the key?", "__proto__");
-obj[key] = "some value";
+// let key = prompt("What's the key?", "__proto__");
+// obj[key] = "some value";
 
-console.log(obj[key]);
+// console.log(obj[key]);
+
+
+
+
+//// private protected properties methods
+
+// class CoffeeMachine {
+    
+//     constructor(power) {
+//         this._power = power;
+//     }
+
+//     get power() {
+//         return this._power;
+//     }
+// }
+
+// let coffeeMachine = new CoffeeMachine(122);
+
+// console.log(coffeeMachine._power);
+// coffeeMachine._power = 500
+// console.log(coffeeMachine.power);
+
+// class CoffeMachine {
+//     _waterLimit = 100;
+//     waterLimit = 100;
+//     #waterLimit = 200;
+
+//     #fixWaterAmount(value) {
+//         if (value < 0) return 0;
+//         if (value > this.#waterLimit) return this.#waterLimit;
+//     }
+
+//     setWaterAmount(value) {
+//         this.#waterLimit = this.#fixWaterAmount(value);
+//     }
+// }
+
+// let coffeeMachine = new COffeeMachine();
+
+// // coffeeMachine.#fixWaterAmount(123);  // ERROR
+// // coffeeMachine.#waterLimit = 100; // ERROR
+
+
+
+
+///   Extending build in classes
+
+// class PowerArray extends Array {
+//     isEmpty() {
+//         return this.length === 0 ? 0 : this.length;
+//     }
+// }
+
+// let arr = new PowerArray(1,2,3,4,5,6,7);
+// console.log(arr.isEmpty());
+
+// let filteredArr = arr.filter(item => item >= 10);
+// console.log(filteredArr);
+// console.log(filteredArr.isEmpty());
+
+
+//// MIXIN ////
+
+// let sayHiMixin = {
+//     syaHi() {
+//         console.log(`Hello ${this.name}`);
+//     },
+//     sayBye() {
+//         console.log(`Bye ${this.name}`);
+//     }
+// };
+
+// class User {
+
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// Object.assign(User.prototype, sayHiMixin);
+
+// new User("Dobby").syaHi();
+
+
+
+// // inheriting mixins from extended class
+
+// let sayHiMixin = {
+//     syaHi() {
+//         console.log(`Hello ${this.name}`);
+//     },
+//     sayBye() {
+//         console.log(`Bye ${this.name}`);
+//     }
+// };
+
+// class Person {
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// Object.assign(Person.prototype, sayHiMixin);
+
+// class User extends Person {
+
+//     constructor(name) {
+//         super();
+//         this.name = name;
+//     }
+// }
+
+
+// new Person("Dobby").syaHi();
+// new User("Waldamort").syaHi();
+
+
+// extending mixin linked class to another class
+
+// let sayHiMixin = {
+//     syaHi() {
+//         console.log(`Hello ${this.name}`);
+//     },
+//     sayBye() {
+//         console.log(`Bye ${this.name}`);
+//     }
+// };
+
+// class User {
+
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// class Person extends User {
+//     constructor(name) {
+//         super();
+//         this.name = name;
+//     }
+// }
+
+// Object.assign(User.prototype, sayHiMixin);
+
+// new User("Dobby").syaHi();
+
+// new Person("some").syaHi();
+
+
+// function loadScript(src, callback) {
+//     let script = document.createElement('script');
+//     script.src = src;
+
+//     script.onload = () => callback(null, script);
+//     script.onerror = () => callback(new Error(`Script load error for #{src}`));
+
+//     document.head.append(script);
+// }
+
+// loadScript('./rough.js', function(error, script) {
+//     if (error) {
+
+//     } else {
+
+//     }
+// })
+
+
+
+// failed example in callback
+
+// function intro() {
+
+//     console.log("Hey good to start now \n wait to 20 seconds");
+
+//     setTimeout(() => {
+//         console.log("Waiting is over now");
+//     }, 20000);
+// }
+
+// intro();
+// console.log("Its finishd now");
+
+
+// // successful callback handling
+
+// function intro(callback) {
+
+//     console.log("Hey good to start now \nwait to 5 seconds");
+
+//     setTimeout(() => {
+//         console.log("Waiting is over now");
+//         callback();
+//     }, 5000);
+// }
+
+// intro(() => {
+//     console.log("Its finished now");
+// });
+
+
+// function loadScript(src, callback) {
+//     let script = document.createElement('script');
+//     script.src = src;
+//     script.onload = () => callback(script);
+//     document.head.append(script);
+// }
+
+// loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+//     console.log(`Cool, the script ${script.src} is loaded`);
+//     console.log( _ ); // function declared in the loaded script
+// });
