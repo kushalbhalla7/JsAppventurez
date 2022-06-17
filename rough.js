@@ -1825,11 +1825,11 @@
 
 
 
-Promise.any([
-    new Promise((resolve, reject) => setTimeout(() => resolve("Whoops!"), 2000)),
-    new Promise((resolve, reject) => setTimeout(() => resolve(1), 1000)),
-    new Promise((resolve, reject) => setTimeout(() => reject(new Error("soemthigns")), 3000))
-  ]).then(value => console.log(value)); // 1
+// Promise.any([
+//     new Promise((resolve, reject) => setTimeout(() => resolve("Whoops!"), 2000)),
+//     new Promise((resolve, reject) => setTimeout(() => resolve(1), 1000)),
+//     new Promise((resolve, reject) => setTimeout(() => reject(new Error("soemthigns")), 3000))
+//   ]).then(value => console.log(value)); // 1
 
 
 
@@ -1845,3 +1845,147 @@ Promise.any([
 
 
 
+
+////// generator /////
+
+// function* generatorSequence() {
+//   yield 1;
+//   yield 2;
+//   return 3;
+// }
+
+
+// let generator = generatorSequence();
+
+// let one = generator.next();
+// console.log(JSON.stringify(one));
+
+
+// let two = generator.next();
+// console.log(JSON.stringify(two));
+
+
+// let three = generator.next();
+// console.log(JSON.stringify(three));
+
+// let four = generator.next();
+// console.log(JSON.stringify(four));
+
+// let five = generator.next();
+// console.log(JSON.stringify(five));
+
+// for ( let i of generator) {
+//   console.log(i);
+// }
+
+
+// function* generateSequence() {
+//   yield 1;
+//   yield 2;
+//   yield 3;
+// }
+
+// let sequence = [0, ...generateSequence()];
+
+// console.log(sequence);
+
+
+
+// let range = {
+//   from: 1,
+//   to: 5,
+
+//   [Symbol.iterator]() {
+//     return {
+//       current: this.from,
+//       last: this.to,
+
+//       next() {
+//         if (this.current <= this.last) {
+//           return { done: false, value: this.current++ };
+//         } else {
+//           return { done: true };
+//         }
+//       }
+//     };
+//   }
+// }
+
+// console.log([...range]);
+
+
+
+// let range = {
+//   from: 1,
+//   to: 5,
+
+//   *[Symbol.iterator]() {
+//     for (let value = this.from; value <= this.to; value++) {
+//       yield value;
+//     }
+//   }
+// };
+
+// console.log([...range]);
+
+
+
+// function* generateSequence(start, end) {
+//   for (let i = start; i <= end; i++) yield i;
+// }
+
+// function* generateAlphaNum() {
+
+//   // yield* generateSequence(48, 57);
+//   for (let i = 48; i <= 57; i++) yield i;
+
+//   // yield* generateSequence(65, 90);
+//   for (let i = 65; i <= 90; i++) yield i;
+
+//   // yield* generateSequence(97, 122);
+//   for (let i = 97; i <= 122; i++) yield i;
+
+// }
+
+// let str = '';
+
+// for(let code of generateAlphaNum()) {
+//   str += String.fromCharCode(code);
+// }
+
+// console.log(str);
+
+
+
+// function* gen() {
+//   // Pass a question to the outer code and wait for an answer
+//   let result = yield "2 + 2 = ?"; // (*)
+
+//   console.log(result);
+// }
+
+// let generator = gen();
+
+// let question = generator.next().value; // <-- yield returns the value
+
+// generator.next(4);
+
+
+
+function* gen() {
+  let ask1 = yield "2 + 2 = ?";
+
+  console.log(ask1); // 4
+
+  let ask2 = yield "3 * 3 = ?"
+
+  console.log(ask2); // 9
+}
+
+let generator = gen();
+
+console.log( generator.next().value ); // "2 + 2 = ?"
+
+console.log( generator.next(4).value ); // "3 * 3 = ?"
+
+console.log( generator.next(9).done ); 
