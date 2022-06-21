@@ -1972,20 +1972,84 @@
 
 
 
-function* gen() {
-  let ask1 = yield "2 + 2 = ?";
+// function* gen() {
+//   let ask1 = yield "2 + 2 = ?";
 
-  console.log(ask1); // 4
+//   console.log(ask1); // 4
 
-  let ask2 = yield "3 * 3 = ?"
+//   let ask2 = yield "3 * 3 = ?"
 
-  console.log(ask2); // 9
-}
+//   console.log(ask2); // 9
+// }
 
-let generator = gen();
+// let generator = gen();
 
-console.log( generator.next().value ); // "2 + 2 = ?"
+// console.log( generator.next().value ); // "2 + 2 = ?"
 
-console.log( generator.next(4).value ); // "3 * 3 = ?"
+// console.log( generator.next(4).value ); // "3 * 3 = ?"
 
-console.log( generator.next(9).done ); 
+// console.log( generator.next(9).done ); 
+
+
+// let target = {};
+// let proxy = new Proxy(target, {});
+
+// proxy.test = 5;
+// console.log(target.test);
+// console.log(proxy.test);
+
+// for (let key in proxy) console.log(key);
+
+
+// const target = {
+//   message1: "hello",
+//   message2: "everyone"
+// };
+
+// const handler2 = {
+//   // get(target, prop, receiver) {
+//   //   return "world";
+//   // }
+//   set(target, prop, receiver) {
+//     target.message1 = "nothing";
+//   }
+// };
+
+// const proxy2 = new Proxy(target, handler2);
+
+// console.log(target);
+// console.log(proxy2.message1);
+// console.log(proxy2.get());
+
+// let numbers = [0, 1, 2];
+
+// numbers = new Proxy(numbers, {
+//   get(target, prop) {
+//     if (prop in target) {
+//       return target[prop];
+//     } else {
+//       return 0; // default value
+//     }
+//   }
+// });
+
+// console.log( numbers[1] ); // 1
+// console.log( numbers[123] ); // 0 (no such item)
+
+let dictionary = {
+  'Hello': 'Hola',
+  'Bye': 'Adiós'
+};
+
+dictionary = new Proxy(dictionary, {
+  get(target, prop) {
+    if (prop in target) {
+      return target[prop];
+    } else {
+      return prop;
+    }
+  }
+})
+
+console.log( dictionary['Hello'] ); // Hola
+console.log( dictionary['Welcome to Proxy']);
