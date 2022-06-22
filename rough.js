@@ -1991,65 +1991,43 @@
 // console.log( generator.next(9).done ); 
 
 
-// let target = {};
-// let proxy = new Proxy(target, {});
 
-// proxy.test = 5;
-// console.log(target.test);
-// console.log(proxy.test);
+/////////////    EVAL     /////////////
 
-// for (let key in proxy) console.log(key);
+// let code = 'console.log("Somethings")';
+// eval(code);
 
 
-// const target = {
-//   message1: "hello",
-//   message2: "everyone"
-// };
+// let value = eval('let i = 0; ++i');
+// console.log(value);
 
-// const handler2 = {
-//   // get(target, prop, receiver) {
-//   //   return "world";
-//   // }
-//   set(target, prop, receiver) {
-//     target.message1 = "nothing";
-//   }
-// };
 
-// const proxy2 = new Proxy(target, handler2);
 
-// console.log(target);
-// console.log(proxy2.message1);
-// console.log(proxy2.get());
+/////////////   CURRYING     /////////
 
-// let numbers = [0, 1, 2];
+// function curry(f) { // curry(f) does the currying transform
+//   return function(a) {
+//     return function(b) {
+//       return f(a, b);
+//     };
+//   };
+// }
 
-// numbers = new Proxy(numbers, {
-//   get(target, prop) {
-//     if (prop in target) {
-//       return target[prop];
-//     } else {
-//       return 0; // default value
-//     }
-//   }
-// });
+// // usage
+// function sum(a, b) {
+//   return a + b;
+// }
 
-// console.log( numbers[1] ); // 1
-// console.log( numbers[123] ); // 0 (no such item)
+// let curriedSum = curry(sum);
 
-let dictionary = {
-  'Hello': 'Hola',
-  'Bye': 'Adiós'
-};
+// console.log( curriedSum(1)(2) ); 
 
-dictionary = new Proxy(dictionary, {
-  get(target, prop) {
-    if (prop in target) {
-      return target[prop];
-    } else {
-      return prop;
-    }
-  }
-})
 
-console.log( dictionary['Hello'] ); // Hola
-console.log( dictionary['Welcome to Proxy']);
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// let curriedSum = _.curry(sum);
+
+// console.log( curriedSum(1, 3) );
+// console.log( curriedSum(1) (8) );
