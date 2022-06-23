@@ -1729,3 +1729,305 @@
 //     console.log(`Cool, the script ${script.src} is loaded`);
 //     console.log( _ ); // function declared in the loaded script
 // });
+
+
+
+
+
+//////  promise chaining  /////////
+
+// new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(1), 3000);
+// })
+// .then((result) => {
+//     console.log(result);
+//     return new Promise((resolve, reject) => { // (*)
+//         setTimeout(() => resolve(result * 2), 1000);
+//     });
+// })
+// .then((result) => {
+//     console.log(result);
+//     return new Promise((resolve, reject) => { // (*)
+//         setTimeout(() => reject(new Error("somethings")), 1000);
+//     });
+// })
+// .then((result) => {
+//     console.log(result);
+//     return new Promise((resolve, reject) => { // (*)
+//         setTimeout(() => resolve(result * 2), 1000);
+//     });
+// })
+
+
+// new Promise((resolve, reject) => {
+//     resolve("ok");
+// }).then(result => {
+//     nothing();
+// }).catch(err => console.log(err.message))
+// .then(err => console.log("sdf"))
+
+
+
+
+// new Promise((resolve, reject) => {
+//     throw new Error('WHoops');
+// }).catch((err) => {
+//     console.log(err.message);
+//     if (err instanceof URIError) {
+//         console.log('handled');
+//     } else {
+//         console.log('Cant handle it');
+//     }
+// }).then(() => {
+//     console.log("nothing to run");
+//     zdfsd
+// })
+// .catch(error => {
+//     console.log(error);
+//     console.log("Unknown error");
+// })
+
+
+///// Promise methods  //////
+
+
+// Promise.all([
+//     new Promise((resolve, reject) => setTimeout(() => resolve(3), 3000)),
+//     new Promise((resolve, reject) => setTimeout(() => resolve(2), 2000)),
+//     new Promise((resolve, reject) => setTimeout(() => resolve(1), 1000)),
+// ]).then(() => console.log("End of the script"));
+
+
+// Promise.all([
+//     new Promise((resolve, reject) => setTimeout(() => {
+//         resolve(3);
+//     }, 3000)),
+//     new Promise((resolve, reject) => setTimeout(() => {
+//         reject(new Error("Error in 2"));
+//     }, 2000)),
+//     new Promise((resolve, reject) => setTimeout(() => {
+//         reject(new Error("Error in 1"))
+//     }, 1000)),
+// ])
+// .then(value => console.log(`returned value ${value}`))
+// .catch((err) => {
+//     console.log("caugth error");
+//     console.log(err);
+// })
+
+
+
+// Promise.race([
+//     new Promise((resolve, reject) => setTimeout(() => resolve(1), 10000)),
+//     new Promise((resolve, reject) => setTimeout(() => reject(new Error("Whoops!")), 2000)),
+//     new Promise((resolve, reject) => setTimeout(() => resolve(3), 3000))
+//   ]).then(value => console.log(value)); // 1
+
+
+
+// Promise.any([
+//     new Promise((resolve, reject) => setTimeout(() => resolve("Whoops!"), 2000)),
+//     new Promise((resolve, reject) => setTimeout(() => resolve(1), 1000)),
+//     new Promise((resolve, reject) => setTimeout(() => reject(new Error("soemthigns")), 3000))
+//   ]).then(value => console.log(value)); // 1
+
+
+
+// Promise.any([
+//     new Promise((resolve, reject) => setTimeout(() => reject(new Error("Ouch!")), 1000)),
+//     new Promise((resolve, reject) => setTimeout(() => reject(new Error("Error!")), 2000))
+//   ]).catch(error => {
+//     console.log(error.constructor.name); // AggregateError
+//     console.log(error.errors[0]); // Error: Ouch!
+//     console.log(error.errors[1]); // Error: Error!
+//   });
+
+
+
+
+
+////// generator /////
+
+// function* generatorSequence() {
+//   yield 1;
+//   yield 2;
+//   return 3;
+// }
+
+
+// let generator = generatorSequence();
+
+// let one = generator.next();
+// console.log(JSON.stringify(one));
+
+
+// let two = generator.next();
+// console.log(JSON.stringify(two));
+
+
+// let three = generator.next();
+// console.log(JSON.stringify(three));
+
+// let four = generator.next();
+// console.log(JSON.stringify(four));
+
+// let five = generator.next();
+// console.log(JSON.stringify(five));
+
+// for ( let i of generator) {
+//   console.log(i);
+// }
+
+
+// function* generateSequence() {
+//   yield 1;
+//   yield 2;
+//   yield 3;
+// }
+
+// let sequence = [0, ...generateSequence()];
+
+// console.log(sequence);
+
+
+
+// let range = {
+//   from: 1,
+//   to: 5,
+
+//   [Symbol.iterator]() {
+//     return {
+//       current: this.from,
+//       last: this.to,
+
+//       next() {
+//         if (this.current <= this.last) {
+//           return { done: false, value: this.current++ };
+//         } else {
+//           return { done: true };
+//         }
+//       }
+//     };
+//   }
+// }
+
+// console.log([...range]);
+
+
+
+// let range = {
+//   from: 1,
+//   to: 5,
+
+//   *[Symbol.iterator]() {
+//     for (let value = this.from; value <= this.to; value++) {
+//       yield value;
+//     }
+//   }
+// };
+
+// console.log([...range]);
+
+
+
+// function* generateSequence(start, end) {
+//   for (let i = start; i <= end; i++) yield i;
+// }
+
+// function* generateAlphaNum() {
+
+//   // yield* generateSequence(48, 57);
+//   for (let i = 48; i <= 57; i++) yield i;
+
+//   // yield* generateSequence(65, 90);
+//   for (let i = 65; i <= 90; i++) yield i;
+
+//   // yield* generateSequence(97, 122);
+//   for (let i = 97; i <= 122; i++) yield i;
+
+// }
+
+// let str = '';
+
+// for(let code of generateAlphaNum()) {
+//   str += String.fromCharCode(code);
+// }
+
+// console.log(str);
+
+
+
+// function* gen() {
+//   // Pass a question to the outer code and wait for an answer
+//   let result = yield "2 + 2 = ?"; // (*)
+
+//   console.log(result);
+// }
+
+// let generator = gen();
+
+// let question = generator.next().value; // <-- yield returns the value
+
+// generator.next(4);
+
+
+
+// function* gen() {
+//   let ask1 = yield "2 + 2 = ?";
+
+//   console.log(ask1); // 4
+
+//   let ask2 = yield "3 * 3 = ?"
+
+//   console.log(ask2); // 9
+// }
+
+// let generator = gen();
+
+// console.log( generator.next().value ); // "2 + 2 = ?"
+
+// console.log( generator.next(4).value ); // "3 * 3 = ?"
+
+// console.log( generator.next(9).done ); 
+
+
+
+/////////////    EVAL     /////////////
+
+// let code = 'console.log("Somethings")';
+// eval(code);
+
+
+// let value = eval('let i = 0; ++i');
+// console.log(value);
+
+
+
+/////////////   CURRYING     /////////
+
+// function curry(f) { // curry(f) does the currying transform
+//   return function(a) {
+//     return function(b) {
+//       return f(a, b);
+//     };
+//   };
+// }
+
+// // usage
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// let curriedSum = curry(sum);
+
+// console.log( curriedSum(1)(2) ); 
+
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// let curriedSum = _.curry(sum);
+
+// console.log( curriedSum(1, 3) );
+// console.log( curriedSum(1) (8) );
